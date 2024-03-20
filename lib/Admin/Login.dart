@@ -1,35 +1,25 @@
 import 'package:flutter/material.dart';
-// import 'HomePage.dart';
 
-void main() {
-  runApp(MyApp());
-}
 
-class MyApp extends StatelessWidget {
+class LOGIN extends StatefulWidget {
+  const LOGIN({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Login(),
-    );
-  }
+  State<LOGIN> createState() => _LOGINState();
 }
 
-class Login extends StatefulWidget {
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
+class _LOGINState extends State<LOGIN> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+
+
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("LOGIN"),
-      ),
+
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 60.0),
@@ -40,8 +30,37 @@ class _LoginState extends State<Login> {
                     /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
-                    child: Image.asset('assets/images/repairing vehicle.avif')),
+                    child: Image.asset('assets/images/repair_image.png')),
               ),
+            ),
+            SizedBox(height: 30,),
+            Text("LOGIN",
+              style: TextStyle(fontWeight: FontWeight.bold),),
+            SizedBox(height: 40,),
+            Padding(
+              padding: const EdgeInsets.only(right: 220
+              ),
+              child: Text("Enter Username"),
+            ),
+            SizedBox(height: 50,
+              child: Padding(
+                //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+
+                      hintText: 'Username'),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 220
+              ),
+              child: Text("Enter Password"),
             ),
             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
@@ -49,52 +68,16 @@ class _LoginState extends State<Login> {
               child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Enter Username',
-                    hintText: 'Username'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
 
-                obscureText: true,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Enter Password',
                     hintText: 'Enter Password'),
               ),
             ),
-            FlatButton(
-              onPressed: (){
-                //TODO FORGOT PASSWORD SCREEN GOES HERE
-              },
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
-              ),
-            ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
-                },
-                child: Text(
-                  'LOGIN',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 130,
-            ),
-            Text('New User? Create Account')
+
+            SizedBox(height: 40,),
+
+            ElevatedButton(onPressed: (){},
+
+                child: Text("LOGIN"))
           ],
         ),
       ),
