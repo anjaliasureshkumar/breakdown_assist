@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'Admin_Mechanic.dart';
-import 'Admin_User.dart';
+import 'Admin_Home_Mechanic.dart';
+import 'Admin_Home_User.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Admin_Home_tab extends StatefulWidget {
+  const Admin_Home_tab({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Admin_Home_tab> createState() => _Admin_Home_tabState();
 }
 
-class _HomeState extends State<Home> {
+class _Admin_Home_tabState extends State<Admin_Home_tab> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       initialIndex: 0,
       child: Scaffold(
         body: Column(
@@ -25,8 +25,8 @@ class _HomeState extends State<Home> {
               ]),
               Expanded(
               child: TabBarView(children: [
-                Admin_User(),
-                Admin_Mechanic(),
+                Admin_Home_User(),
+                Admin_Home_Mechanic(),
               ],),
               )
             ],

@@ -1,125 +1,228 @@
 import 'package:flutter/material.dart';
+
 class Admin_Mechanic extends StatefulWidget {
   const Admin_Mechanic({super.key});
 
   @override
-  State<Admin_Mechanic> createState() => _Admin_home_userState();
+  State<Admin_Mechanic> createState() => _Admin_MechanicState();
 }
 
-class _Admin_home_userState extends State<Admin_Mechanic> {
+class _Admin_MechanicState extends State<Admin_Mechanic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.separated(
-          separatorBuilder: (context, index) =>
-              Divider(thickness: 5, color: Colors.white,),
-          itemCount: 15,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-              child: Card(
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-                    SizedBox(height: 20,),
-                    CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/person image.jpg"),
-                      radius: 30,
-                    ),
+      backgroundColor: Colors.blue.shade200,
+        body: SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+              vertical: 60
+          ),
+          child: Container(
+            height:900,
+            width: 340,
+            decoration: BoxDecoration(
+                color: Colors.white
+            ),
+            child: Column(
+              children: [
                 SizedBox(
-                  width: 40,
+                  height: 50,
                 ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 15,
+                Container(child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundImage: AssetImage("assets/images/person image.jpg"),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text("Name",style: TextStyle(fontSize: 19),),
+                    Text("Location",style: TextStyle(fontSize: 19),),
+                  ],
+                ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Text("Username",style: TextStyle(fontSize: 18),),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)
                         ),
-                        Text("Name", style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),),
-                        Text("Mobile Number", style: TextStyle(
-                          fontSize: 15,)),
-                        Text("service", style: TextStyle(
-                          fontSize: 15,)),
+                        hintText: "Username"
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Text("Phone number",style: TextStyle(fontSize: 18),),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        hintText: "0000000000"
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Text("Email address",style: TextStyle(fontSize: 18),),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        hintText: "Example@email.com"
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Text("Work experience",style: TextStyle(fontSize: 18),),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        hintText: "experience"
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Text("Work shop name",style: TextStyle(fontSize: 18),),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        hintText: "Shop name"
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     SizedBox(
+                //       height: 10,
+                //     ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                          child: Text("Your location",style: TextStyle(fontSize: 18),),
+                        ),
                       ],
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            hintText: "Enter your location"
+                        ),
+                      ),
+                    ),
 
+
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                        children: [
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)
+                                  ),
+                                  backgroundColor: Colors.green.shade300,
+                                  foregroundColor: Colors.white
+                              ),
+                              onPressed: (){},
+                              child: Text("Accept",style: TextStyle(fontSize: 20))),
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5)
+                              ),
+                              backgroundColor: Colors.red.shade300,
+                              foregroundColor: Colors.white
+                          ),
+                          onPressed: (){},
+                          child: Text("Reject",style: TextStyle(fontSize: 20),)),  ],
+                      ),
+                    ),
 
                   ],
                 ),
-              ),
-            );
-          }
-      ),
-      // body: SingleChildScrollView(
-      //   child: Center(
-      //     child: Column(
-      //       children: [
-      //
-      //         Container(
-      //           height: 900,
-      //           width: 470,
-      //           child: ListView.separated(
-      //             separatorBuilder: (context,index)=>Divider(
-      //               // indent: 13,
-      //               // endIndent: 60,
-      //               color:Colors.white ,
-      //               thickness: 20,
-      //               height: 50,
-      //             ),
-      //             itemCount: 5,
-      //             itemBuilder: (BuildContext context,int index){
-      //               return
-      //                Container(
-      //
-      //                  child: Row(
-      //
-      //                    mainAxisAlignment: MainAxisAlignment.start,
-      //                    crossAxisAlignment: CrossAxisAlignment.center,
-      //
-      //
-      //                    children: [
-      //                      SizedBox(
-      //                        height:50,
-      //                          width: 50,
-      //                          child: Image.asset("assets/images/man.png")),
-      //                      SizedBox(
-      //                        width: 20,
-      //                      ),
-      //                      Column(
-      //                        mainAxisAlignment: MainAxisAlignment.center,
-      //                        crossAxisAlignment: CrossAxisAlignment.start,
-      //                        children: [
-      //                          SizedBox(height: 20,),
-      //                          Text("Name",style: TextStyle(fontWeight: FontWeight.bold),),
-      //                          Text("Location",),
-      //                          Text("Mobile number"),
-      //                          Text("Email"),
-      //                          SizedBox(
-      //                            height: 20,
-      //                          ),
-      //                        ],
-      //                      )
-      //                    ],
-      //
-      //                  ),
-      //                );
-      //             }
-      //
-      //
-      //         ),
-      //
-      //
-      //
-      //         )
-      //       ],
-      //     ),
-      //   ),
-      // ),
-      //
 
-    );
+            ),
+          ),
+        ),
+      ),
+        );
+
   }
 }

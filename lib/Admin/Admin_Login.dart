@@ -1,4 +1,7 @@
+import 'package:breakdown_assist/Admin/Admin_Home_User.dart';
 import 'package:flutter/material.dart';
+
+import 'Admin_Home_tab.dart';
 
 
 class LOGIN extends StatefulWidget {
@@ -9,6 +12,17 @@ class LOGIN extends StatefulWidget {
 }
 
 class _LOGINState extends State<LOGIN> {
+  var name=TextEditingController();
+  var password=TextEditingController();
+  LOGIN() {
+    if (name.text == 'anjali' && password.text == '12345') {
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) {
+            return Admin_Home_tab();
+          },
+      ));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +60,8 @@ class _LOGINState extends State<LOGIN> {
               child: Padding(
                 //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
                 padding: EdgeInsets.symmetric(horizontal: 15),
-                child: TextField(
+                child: TextFormField(
+                  controller: name,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
 
@@ -65,7 +80,8 @@ class _LOGINState extends State<LOGIN> {
             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
+              child: TextFormField(
+                controller: password,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
 
@@ -75,7 +91,7 @@ class _LOGINState extends State<LOGIN> {
 
             SizedBox(height: 40,),
 
-            ElevatedButton(onPressed: (){},
+            ElevatedButton(onPressed: (){LOGIN();},
 
                 child: Text("LOGIN"))
           ],
