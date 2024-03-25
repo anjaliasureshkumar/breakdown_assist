@@ -1,6 +1,7 @@
 import 'package:breakdown_assist/Admin/Admin_Home_User.dart';
 import 'package:flutter/material.dart';
 
+import 'Admin_Home.dart';
 import 'Admin_Home_tab.dart';
 
 
@@ -18,7 +19,7 @@ class _LOGINState extends State<LOGIN> {
     if (name.text == 'anjali' && password.text == '12345') {
       Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return Admin_Home_tab();
+            return Admin_home();
           },
       ));
     }

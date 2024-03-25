@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 
 class Admin_Add_Notification extends StatefulWidget {
@@ -9,96 +11,107 @@ class Admin_Add_Notification extends StatefulWidget {
 }
 
 class Admin_Add_NotificationState extends State<Admin_Add_Notification> {
+  var matter = TextEditingController();
+  var content = TextEditingController();
+  final date = new DateTime.now();
+  TimeOfDay time = TimeOfDay.now();
+  final _Key= GlobalKey<FormState>();
+  final Snack= SnackBar(
+      duration: Duration(seconds: 3),
+      content: Text("Notification send"));
+
+ Future<dynamic> AddNotification() async{
+   await FirebaseFirestore.instance.collection('Notification').add({
+     'matter': matter.text,
+     'content': content.text,
+     'time': time.format(context),
+     'date': DateFormat('dd/mm/yy').format(date),
+     "status": 0
+   }).then((value){
+     print("Success");
+     Navigator.pop(context);
+   });
+   matter.clear();
+   content.clear();
+ }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-
-      //
-      backgroundColor: Colors.white,
-
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Padding(
-              padding: const EdgeInsets.only(top: 60.0),
-              child: Center(
-                child: Container(
-                    width: 200,
-                    height: 150,
-                    /*decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(50.0)),*/
-                    // child: Image.asset('assets/images/repair_image.png')),
+              padding: const EdgeInsets.fromLTRB(0,5, 150,0),
+              child: Text("Enter Matter :", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30,5,30,0),
+              child: TextFormField(
+                controller: matter,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  hintText: "Matter",
+                ),
+              ),
             ),
-            // SizedBox(height: 30,),
-            // Text("LOGIN",
-            //   style: TextStyle(fontWeight: FontWeight.bold),),
-            // SizedBox(height: 40,),
-            // Padding(
-            //   padding: const EdgeInsets.only(right: 220
-            //   ),
-            //   child: Text("Enter Matter"),
-            // ),
-            // SizedBox(height: 50,
-            //   child: Padding(
-            //     //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-            //     padding: EdgeInsets.symmetric(horizontal: 15),
-            //     child: TextField(
-            //       decoration: InputDecoration(
-            //           border: OutlineInputBorder(),
-            //
-            //           hintText: 'Matter'),
-            //     ),
-            //   ),
-            // ),
-        SizedBox(
-          height: 30,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 220
-          ),
-          child: Text("Enter Matter"),
-        ),
-        Padding(
-          //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: TextField(
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-
-                hintText: 'Matter'),
-          ),
-        ),
-
-        SizedBox(
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0,5, 150,0),
+              child: Text("Enter Content :", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+            ),
+            Container(
+              height: 200,
+              width: 330,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(10)
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10,5, 0,0),
+                child: TextFormField(
+                  controller: content,
+                  maxLines: 5,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Content...",
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 220
+            Container(
+              height: 50,
+              width: 200,
+              child: ElevatedButton(onPressed: (){
+                AddNotification();
+              },
+                style: ElevatedButton.styleFrom(
+                  shape: ContinuousRectangleBorder(
+                      side: BorderSide(color: Colors.blueAccent)
+                  ),
+                  backgroundColor: Colors.purple,
+                  foregroundColor: Colors.white,
+                  elevation: 30,
+                ),
+                child: Text("SUBMIT", style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
               ),
-              child: Text("Enter Content"),
             ),
-            Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-
-                    hintText: 'Content'),
-              ),
-            ),
-
-            SizedBox(height: 40,),
-
-            ElevatedButton(onPressed: (){},
-
-                child: Text("Submit"))
-          ]
+          ],
         ),
       ),
     );

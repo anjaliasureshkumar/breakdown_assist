@@ -13,12 +13,14 @@ class User_Signup extends StatefulWidget {
 class _User_SignupState extends State<User_Signup> {
   final _formkey=GlobalKey<FormState>();
  var usename = TextEditingController();
+ var location = TextEditingController();
  var number = TextEditingController();
  var email = TextEditingController();
  var password = TextEditingController();
  Future<dynamic> usersignup() async {
    await FirebaseFirestore.instance.collection('usersignup').add({
      "username": usename.text,
+     "location": location.text,
      "phone": number.text,
      "email": email.text,
      "password": password.text,
@@ -82,7 +84,33 @@ class _User_SignupState extends State<User_Signup> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 240),
+                    child: Text("Enter Location",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      controller: location,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {   // Validation Logic
+                          return 'Please enter location';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        hintText: "Location",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8)
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
 
                   ),
                   Padding(
@@ -107,6 +135,10 @@ class _User_SignupState extends State<User_Signup> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 15,
+
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(right: 240),
                     child: Text("Enter your email",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
@@ -130,7 +162,7 @@ class _User_SignupState extends State<User_Signup> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 15,
 
                   ),
                   Padding(

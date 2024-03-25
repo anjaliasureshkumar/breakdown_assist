@@ -1,14 +1,11 @@
 
-
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Mechanic_Rating.dart';
-import 'Mechanic_Tab.dart';
-import 'Service_Page.dart';
+import 'Mechanic_Request.dart';
+import 'Mechanic_Service_Home.dart';
+import 'Mechanic_Service.dart';
 
 class Mechanic_Home extends StatefulWidget {
   const Mechanic_Home({super.key});
@@ -20,8 +17,8 @@ class Mechanic_Home extends StatefulWidget {
 class _Mechanic_HomeState extends State<Mechanic_Home> {
   int _indexNum=0;
   List tabs = [
-    Mechanic_Request(),
-    Mechanic_Service_Page(),
+    Request_Tab(),
+    Mechanic_Service(),
     Mechanic_Rating(),
 
 
