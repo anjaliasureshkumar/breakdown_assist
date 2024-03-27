@@ -1,4 +1,4 @@
-
+import 'package:breakdown_assist/Mechanic/Mechanic_Profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,84 +15,65 @@ class Mechanic_Home extends StatefulWidget {
 }
 
 class _Mechanic_HomeState extends State<Mechanic_Home> {
-  int _indexNum=0;
+  int _indexNum = 0;
   List tabs = [
     Request_Tab(),
     Mechanic_Service(),
     Mechanic_Rating(),
-
-
   ];
   @override
   Widget build(BuildContext context) {
-    return  DefaultTabController(
+    return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-
-          leading: GestureDetector(
-            onTap: (){
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Edit_profile()),
-              // );
-
-
+          leading: InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return Mechanic_Profile();
+                },
+              ));
             },
             child: CircleAvatar(
-
-              backgroundImage: ExactAssetImage("assets/images/person image.jpg"),
+              backgroundImage:
+                  ExactAssetImage("assets/images/person image.jpg"),
             ),
           ),
           actions: [
-            IconButton(onPressed: (){
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Nofification_Mech()),
-              // );
-
-
-            }, icon: Icon(Icons.notification_add_outlined))
+            IconButton(
+                onPressed: () {
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => Nofification_Mech()),
+                  // );
+                },
+                icon: Icon(Icons.notification_add_outlined))
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(items: [
-          BottomNavigationBarItem(
-            label: "Request",
-            icon: Icon(Icons.person_search),
-          ),
-          BottomNavigationBarItem(
-            label: "Service",
-            icon: Icon(Icons.miscellaneous_services)
-            ,),
-          BottomNavigationBarItem(
-              label: "Rating",
-              icon: Icon(Icons.eighteen_up_rating_outlined))
-        ],
+        bottomNavigationBar: BottomNavigationBar(
+            items: [
+              BottomNavigationBarItem(
+                label: "Request",
+                icon: Icon(Icons.person_search),
+              ),
+              BottomNavigationBarItem(
+                label: "Service",
+                icon: Icon(Icons.miscellaneous_services),
+              ),
+              BottomNavigationBarItem(
+                  label: "Rating",
+                  icon: Icon(Icons.eighteen_up_rating_outlined))
+            ],
             iconSize: 25,
-
-
-
             currentIndex: _indexNum,
-            onTap: (int index){
-
+            onTap: (int index) {
               setState(() {
-                _indexNum= index;
+                _indexNum = index;
               });
-
-            }
-        ),
+            }),
         body: tabs.elementAt(_indexNum),
-
       ),
-
-
-
-
-
-
-
-
     );
   }
 }
-

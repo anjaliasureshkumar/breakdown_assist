@@ -203,10 +203,12 @@ class _User_SignupState extends State<User_Signup> {
 
                     }, child: Text("SIGN UP",style: TextStyle(color: Colors.black),),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
+                        backgroundColor: Colors.blueAccent,
                       ),
                     ),
-                  )
+                    ),
+
+
 
                 ]
             ),

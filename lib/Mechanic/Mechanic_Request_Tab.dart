@@ -31,7 +31,7 @@ class _Mechanic_Request_TabState extends State<Mechanic_Request_Tab> {
                           height: 5,
                         ),
                         CircleAvatar(
-                          backgroundImage: AssetImage("Assets/profile img.png"),
+                          backgroundImage: AssetImage("assets/images/person image.jpg"),
                           radius: 40,
                         ),
                         Text("Name",style: TextStyle(fontSize: 20))
