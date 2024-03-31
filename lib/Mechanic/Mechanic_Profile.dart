@@ -76,10 +76,15 @@ class _Mechanic_ProfileState extends State<Mechanic_Profile> {
                           color: Colors.black,
                         )),
                   ),
+                  mech!['path']==""?
+                  CircleAvatar(
+                    radius: 60,
+                    backgroundImage: ExactAssetImage("assets/images/person image.jpg"),
+                  ):
                   CircleAvatar(
                     radius: 60,
                     backgroundImage:
-                        ExactAssetImage("assets/images/person image.jpg"),
+                        NetworkImage(mech["path"]),
                   ),
                   SizedBox(
                     height: 30,

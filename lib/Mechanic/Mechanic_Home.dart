@@ -2,6 +2,7 @@ import 'package:breakdown_assist/Mechanic/Mechanic_Profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Mechanic_Notification.dart';
 import 'Mechanic_Rating.dart';
 import 'Mechanic_Request.dart';
 import 'Mechanic_Service_Home.dart';
@@ -43,10 +44,10 @@ class _Mechanic_HomeState extends State<Mechanic_Home> {
           actions: [
             IconButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => Nofification_Mech()),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Mechanic_Notification()),
+                  );
                 },
                 icon: Icon(Icons.notification_add_outlined))
           ],

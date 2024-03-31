@@ -25,7 +25,7 @@ class Admin_Add_NotificationState extends State<Admin_Add_Notification> {
      'matter': matter.text,
      'content': content.text,
      'time': time.format(context),
-     'date': DateFormat('dd/mm/yy').format(date),
+     'date': DateFormat('dd/MM/yyyy').format(date),
      "status": 0
    }).then((value){
      print("Success");
@@ -100,7 +100,7 @@ class Admin_Add_NotificationState extends State<Admin_Add_Notification> {
                   shape: ContinuousRectangleBorder(
                       side: BorderSide(color: Colors.blueAccent)
                   ),
-                  backgroundColor: Colors.purple,
+                  backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
                   elevation: 30,
                 ),

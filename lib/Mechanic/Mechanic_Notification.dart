@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Mechanic_Notification extends StatefulWidget {
@@ -20,7 +21,6 @@ class _Mechanic_NotificationState extends State<Mechanic_Notification> {
             style: TextStyle(fontSize: 30),
           ),
           centerTitle: true,
-
         ),
         body: FutureBuilder(
             future: FirebaseFirestore.instance.collection('Notification').get(),
@@ -39,9 +39,9 @@ class _Mechanic_NotificationState extends State<Mechanic_Notification> {
               final _notification = snapshot.data?.docs ?? [];
               return ListView.separated(
                   separatorBuilder: (context, index) => Divider(
-                    thickness: 5,
-                    color: Colors.white,
-                  ),
+                        thickness: 5,
+                        color: Colors.white,
+                      ),
                   itemCount: _notification.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
@@ -50,40 +50,45 @@ class _Mechanic_NotificationState extends State<Mechanic_Notification> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all()),
-                          child: Column(
+                          child: Column(children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child: Text(_notification[index]['matter'],
-                                          style: TextStyle(fontSize: 20)),
-                                    ),
-                                    Spacer(),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10),
-                                      child: Text(_notification[index]['time']),
-                                    )
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(_notification[index]['matter'],
+                                      maxLines: 1,
+                                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
                                 ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child: Text(_notification[index]['content'],
-                                          style: TextStyle(fontSize: 20)),
-                                    ),
-                                    Spacer(),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10),
-                                      child: Text(_notification[index]['date']),
-                                    )
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Text(_notification[index]['time']),
                                 )
-                              ]
-                          ),
-                        )
-                    );
+                              ],
+                            ),
+
+                            Row(mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SizedBox(
+                                    width: 280,
+                                    child: Text(_notification[index]['content'],
+                                        style: TextStyle(fontSize: 20)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(mainAxisAlignment:MainAxisAlignment.end ,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Text(_notification[index]['date']),
+                                )
+                              ],
+                            )
+                          ]),
+                        ));
                   });
             }));
   }

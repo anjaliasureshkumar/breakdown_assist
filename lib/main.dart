@@ -14,6 +14,7 @@ import 'Admin/Admin_Home.dart';
 import 'Admin/Admin_Home_User.dart';
 import 'Admin/Admin_Mechanic.dart';
 import 'Admin/Admin_User.dart';
+import 'Mechanic/Mechanic_Edit_Profile.dart';
 import 'Mechanic/Mechanic_Profile.dart';
 import 'Mechanic/Mechanic_Home.dart';
 import 'Mechanic/Mechanic_Login.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:User_Login()
+      home:Admin_home(),
     );
   }
 }

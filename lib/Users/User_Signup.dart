@@ -24,6 +24,7 @@ class _User_SignupState extends State<User_Signup> {
      "phone": number.text,
      "email": email.text,
      "password": password.text,
+     "path":"",
      "status":0
    }).then((value) {
      print("Success");

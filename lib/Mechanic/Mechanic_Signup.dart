@@ -1,3 +1,5 @@
+
+
 import 'package:breakdown_assist/Mechanic/Mechanic_Login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,7 @@ class Mechanic_Signup extends StatefulWidget {
 class _Mechanic_SignupState extends State<Mechanic_Signup> {
   final _formkey=GlobalKey<FormState>();
   var username = TextEditingController();
+  var location = TextEditingController();
   var number = TextEditingController();
   var email = TextEditingController();
   var experience = TextEditingController();
@@ -20,11 +23,13 @@ class _Mechanic_SignupState extends State<Mechanic_Signup> {
   Future<dynamic> mechanicsignup() async {
     await FirebaseFirestore.instance.collection('mechanicsignup').add({
       "username": username.text,
+      "location": location.text,
       "phone": number.text,
       "email": email.text,
       "experience": experience.text,
       "shopname": shopname.text,
       "password": password.text,
+      "path":"",
       "status":0
     }).then((value) {
       print("Success");
@@ -78,6 +83,32 @@ class _Mechanic_SignupState extends State<Mechanic_Signup> {
                       },
                       decoration: InputDecoration(
                         hintText: "Username",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8)
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 220),
+                    child: Text("Enter Location",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12),),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      controller:  location,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {   // Validation Logic
+                          return 'Please enter your location';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        hintText: "Location",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8)
                         ),

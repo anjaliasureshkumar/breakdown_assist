@@ -1,5 +1,10 @@
+
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Mechanic_Profile.dart';
@@ -12,6 +17,50 @@ class Mech_Edit_profile extends StatefulWidget {
 }
 
 class _Mech_Edit_profileState extends State<Mech_Edit_profile> {
+
+  var imageURL;
+  XFile? _image;
+
+  Future<void> pickimage() async {
+    final ImagePicker _picker = ImagePicker();
+    try {
+      XFile? pickedimage = await _picker.pickImage(source: ImageSource.gallery);
+      if (pickedimage != null) {
+        setState(() {
+          _image = pickedimage;
+        });
+        print("Image upload succersfully");
+        await uploadimage();
+      }
+    } catch (e) {
+      print("Error picking image:$e");
+    }
+  }
+
+  Future<void> uploadimage() async {
+    try {
+      if (_image != null) {
+        Reference storrageReference =
+        FirebaseStorage.instance.ref().child('profile/${_image!.path}');
+        await storrageReference.putFile(File(_image!.path));
+        imageURL = await storrageReference.getDownloadURL();
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+              "Uploaded succesfully",
+              style: TextStyle(color: Colors.green),
+            )));
+
+        FirebaseFirestore.instance
+            .collection("mechanicsignup")
+            .doc(ID)
+            .update({"path": imageURL});
+        print("/////////picked$imageURL");
+      } else
+        CircularProgressIndicator();
+    } catch (e) {
+      print("Error uploading image:$e");
+    }
+  }
 
   final formkey = GlobalKey<FormState>();
 
@@ -72,6 +121,10 @@ class _Mech_Edit_profileState extends State<Mech_Edit_profile> {
                 SizedBox(
                   height: 30,
                 ),
+                IconButton(onPressed: (){
+                  pickimage();
+                },
+                    icon: Icon(Icons.camera)),
                 Padding(
                   padding: const EdgeInsets.only(right: 250),
                   child: Text(

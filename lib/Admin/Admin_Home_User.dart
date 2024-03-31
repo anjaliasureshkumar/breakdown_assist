@@ -58,30 +58,34 @@ class _Admin_Home_UserState extends State<Admin_Home_User> {
                           radius: 30,
                         ),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
                               height: 15,
                             ),
-                            Text(
-                              user[index]['username'],
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(user[index]['location'],
+                            Row(mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  user[index]['username'],
                                   style: TextStyle(
-                                    fontSize: 15,
-                                  )),
+                                      fontSize: 15, fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 62),
-                              child: Text(user[index]['phone'],
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  )),
+                            Row(mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(user[index]['location'],
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    )),
+                              ],
                             ),
+
+                            Text(user[index]['phone'],
+                                style: TextStyle(
+                                  fontSize: 15,
+                                )),
                             Text(user[index]['email'],
                                 style: TextStyle(
                                   fontSize: 15,
@@ -90,7 +94,37 @@ class _Admin_Home_UserState extends State<Admin_Home_User> {
                               height: 15,
                             ),
                           ],
+
                         ),
+                        Spacer(),
+                        user[index]['status']==0?
+                        ElevatedButton(onPressed: () {}, child: Text("Pending"),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blueGrey,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)
+                            ),
+                          ),
+                        ):user[index]['status']==1?
+                        ElevatedButton(onPressed: () {}, child: Text("Accepted"),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blueGrey,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)
+                            ),
+                          ),
+                        ):ElevatedButton(onPressed: () {}, child: Text("Rejected"),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blueGrey,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)
+                            ),
+                          ),
+                        ),
+                        Spacer(),
                       ],
                     ),
                   ),

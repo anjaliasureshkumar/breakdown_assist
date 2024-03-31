@@ -1,5 +1,12 @@
+
+
+
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class User_Profile extends StatefulWidget {
@@ -10,6 +17,50 @@ class User_Profile extends StatefulWidget {
 }
 
 class _User_ProfileState extends State<User_Profile> {
+
+  var imageURL;
+  XFile? _image;
+
+  Future<void> pickimage() async {
+    final ImagePicker _picker = ImagePicker();
+    try {
+      XFile? pickedimage = await _picker.pickImage(source: ImageSource.gallery);
+      if (pickedimage != null) {
+        setState(() {
+          _image = pickedimage;
+        });
+        print("Image upload succersfully");
+        await uploadimage();
+      }
+    } catch (e) {
+      print("Error picking image:$e");
+    }
+  }
+
+  Future<void> uploadimage() async {
+    try {
+      if (_image != null) {
+        Reference storrageReference =
+        FirebaseStorage.instance.ref().child('profile/${_image!.path}');
+        await storrageReference.putFile(File(_image!.path));
+        imageURL = await storrageReference.getDownloadURL();
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+              "Uploaded succesfully",
+              style: TextStyle(color: Colors.green),
+            )));
+
+        FirebaseFirestore.instance
+            .collection("usersignup")
+            .doc(ID)
+            .update({"path": imageURL});
+        print("/////////picked$imageURL");
+      } else
+        CircularProgressIndicator();
+    } catch (e) {
+      print("Error uploading image:$e");
+    }
+  }
 
   void initState() {
     super.initState();
@@ -54,17 +105,22 @@ class _User_ProfileState extends State<User_Profile> {
                   ),
                   Column(
                     children: [
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 120,
-                          ),
-                          CircleAvatar(
-                            radius: 60,
-                            backgroundImage: AssetImage("assets/images/repair_image.png"),
-                          ),
-                        ],
+                      SizedBox(
+                        width: 120,
                       ),
+                      user!['path']==""?
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundImage: ExactAssetImage("assets/images/person image.jpg"),
+                      ):
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundImage: NetworkImage(user?["path"]),
+                      ),
+                      IconButton(onPressed: (){
+                        pickimage();
+                      },
+                          icon: Icon(Icons.camera)),
                     ],
                   ),
                   SizedBox(
