@@ -25,7 +25,7 @@ class _Mechanic_StatusState extends State<Mechanic_Status> {
     FirebaseFirestore.instance
         .collection('mechreq')
         .doc(widget.id)
-        .update({'payment': "3", 'WorkCompleteAmount': amount.text});
+        .update({'payment': 3, 'WorkCompleteAmount': amount.text});
     Navigator.of(context).pop();
     print("amount added");
   }
@@ -34,7 +34,7 @@ class _Mechanic_StatusState extends State<Mechanic_Status> {
     FirebaseFirestore.instance
         .collection('mechreq')
         .doc(widget.id)
-        .update({'payment': "4", 'WorkReject': reject.text});
+        .update({'payment': 4, 'WorkReject': reject.text});
     print("reject reason added");
     Navigator.of(context).pop();
   }

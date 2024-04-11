@@ -1,6 +1,6 @@
 import 'package:breakdown_assist/Admin/Admin_Home_tab.dart';
-import 'package:breakdown_assist/admin/admin_home_mechanic.dart';
-import 'package:breakdown_assist/admin/admin_home_user.dart';
+import 'package:breakdown_assist/admin/Mechanic_List.dart';
+import 'package:breakdown_assist/admin/Admin_Userlist.dart';
 import 'package:breakdown_assist/admin/admin_notification.dart';
 import 'package:breakdown_assist/admin/admin_payment.dart';
 import 'package:flutter/material.dart';

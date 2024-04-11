@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'Admin_Home_Mechanic.dart';
-import 'Admin_Home_User.dart';
+import 'Mechanic_List.dart';
+import 'Admin_Userlist.dart';
+import 'Mechanic_List.dart';
+import 'Mechanic_List.dart';
+import 'Mechanic_List.dart';
+import 'Mechanic_List.dart';
+import 'Mechanic_List.dart';
+import 'Mechanic_List.dart';
 
 class Admin_Home_tab extends StatefulWidget {
   const Admin_Home_tab({super.key});
@@ -25,8 +31,8 @@ class _Admin_Home_tabState extends State<Admin_Home_tab> {
               ]),
               Expanded(
               child: TabBarView(children: [
-                Admin_Home_User(),
-                Admin_Home_Mechanic(),
+                Admin_Userlist(),
+                Mechanic_List(),
               ],),
               )
             ],

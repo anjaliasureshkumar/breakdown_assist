@@ -1,3 +1,4 @@
+import 'package:breakdown_assist/Users/User_Home.dart';
 import 'package:flutter/material.dart';
 
 class User_Payment extends StatefulWidget {
@@ -20,7 +21,7 @@ class _User_PaymentState extends State<User_Payment> {
             CircleAvatar(
               radius: 55,
               backgroundColor: Colors.white,
-              backgroundImage: AssetImage(""),
+              backgroundImage: AssetImage("assets/images/tick_pic.jpg"),
             ),
             Text("Successfull",style: TextStyle(fontSize: 25),),
             Spacer(),
@@ -30,7 +31,9 @@ class _User_PaymentState extends State<User_Payment> {
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white
                 ),
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> User_home()));
+                },
                 child: Text("Back to home page")),
             SizedBox(
               height: 50,

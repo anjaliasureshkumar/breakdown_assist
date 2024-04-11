@@ -1,4 +1,4 @@
-import 'package:breakdown_assist/Admin/Admin_Home_Mechanic.dart';
+import 'package:breakdown_assist/Admin/Mechanic_List.dart';
 import 'package:breakdown_assist/Admin/Admin_Notification.dart';
 import 'package:breakdown_assist/Admin/Admin_Payment.dart';
 import 'package:breakdown_assist/Admin/Admin_Login.dart';
@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 import 'Admin/Admin_Add_Notification.dart';
 import 'Admin/Admin_Home.dart';
-import 'Admin/Admin_Home_User.dart';
+import 'Admin/Admin_Userlist.dart';
 import 'Admin/Admin_Mechanic.dart';
 import 'Admin/Admin_User.dart';
 import 'Mechanic/Mechanic_Edit_Profile.dart';
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:Admin_home(),
+      home:SplashScreen(),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:breakdown_assist/Who_you_are.dart';
 import 'package:flutter/material.dart';
 
-import 'Admin/Admin_Login.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -24,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 3));
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>WhoYouAreScreen()));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

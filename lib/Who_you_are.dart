@@ -1,5 +1,8 @@
 import 'package:breakdown_assist/Admin/Admin_Login.dart';
+import 'package:breakdown_assist/Mechanic/Mechanic_Login.dart';
 import 'package:flutter/material.dart';
+
+import 'Users/User_Login.dart';
 
 void main() {
   runApp(MyApp());
@@ -50,6 +53,8 @@ class WhoYouAreScreen extends StatelessWidget {
               width: 250,
               child: ElevatedButton(
                 onPressed: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mechanic_Login()));
+
 
                   // Handle first button press
                   // print('First button pressed!');
@@ -62,11 +67,9 @@ class WhoYouAreScreen extends StatelessWidget {
               height: 40,
               width: 250,
               child: ElevatedButton(
-                onPressed: () {onPressed: () {
+                onPressed: () {
 
-                };
-
-                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyApp()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>User_Login()));
 
                   // Handle second button press
                   // print('Second button pressed!');
